@@ -386,7 +386,7 @@ body.light{--bg:#F0F2F6;--s0:#fff;--s1:#fff;--s2:#F5F7FA;--s3:#E8EDF5;--ln:#DDE3
     <div class="ntab"     data-page="map">2D Map</div>
     <div class="ntab"     data-page="calib">Calibration</div>
     <div class="ntab"     data-page="audit">Audit Log</div>
-    <div class="ntab"     data-page="admin" style="color:var(--warn)">🔐 Admin</div>
+    <div class="ntab"     data-page="admin">⚙ Admin</div>
     <div class="ntab"     data-page="pm">📅 PM Schedule</div>
     <div class="ntab"     data-page="report">🖨️ Report</div>
   </div>
@@ -509,138 +509,97 @@ var SHEETS_URL = localStorage.getItem('sd_sheets_url') || '';
 //  STATIC FALLBACK DATA (ใช้เมื่อ Sheets ไม่พร้อม)
 // ═══════════════════════════════════════════════════
 const RAW=[
-  // BP3 · CD2
-  {bldg:'BP3',floor:1,line:'CD2',station:'CA01',serial:'T24440016',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CD2',station:'CA02',serial:'T26100015',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CD2',station:'CA03',serial:'T25130015',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CD2',station:'CA04',serial:'T24330003',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CD2',station:'Offline',serial:'T26100022',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-01-01'},
-  // BP3 · SNT17
-  {bldg:'BP3',floor:1,line:'SNT17',station:'Offline',serial:'T23110003',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT17',station:'SS02',serial:'T26030011',model:'ECM-SD3-F30S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT17',station:'SS03',serial:'T25370008',model:'ECM-SD3-F30S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT17',station:'SS04',serial:'T23110008',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  // BP3 · SNT23
-  {bldg:'BP3',floor:1,line:'SNT23',station:'CA02',serial:'T24330009',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT23',station:'CA02',serial:'T26100013',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT23',station:'SS03',serial:'T23220003',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  // BP3 · CDS1
-  {bldg:'BP3',floor:1,line:'CDS1',station:'CA01',serial:'T24330009',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CDS1',station:'CA01',serial:'T25080029',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CDS1',station:'CA02',serial:'T26100013',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CDS1',station:'CA02',serial:'T23200003',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CDS1',station:'CA03',serial:'T25450033',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CDS1',station:'CA03',serial:'T24440015',model:'ECM-SD3-F30S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CDS1',station:'CA04',serial:'T25030019',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CDS1',station:'CA04',serial:'T25100009',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'CDS1',station:'CA05',serial:'T24120023',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  // BP3 · SNT25
-  {bldg:'BP3',floor:1,line:'SNT25',station:'SS01',serial:'T25450027',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT25',station:'SS02',serial:'T25290024',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT25',station:'SS03',serial:'T26100021',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT25',station:'CA02',serial:'T25450036',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT25',station:'SS04',serial:'T25450036B',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT25',station:'Offline1',serial:'T25330021',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT25',station:'Offline2',serial:'T25080041',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT25',station:'Test machine',serial:'T25080041B',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  // BP3 · SNT26
-  {bldg:'BP3',floor:1,line:'SNT26',station:'CA1',serial:'T25290004',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT26',station:'CA2',serial:'T25290015',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  {bldg:'BP3',floor:1,line:'SNT26',station:'CA3',serial:'T26100023',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  // BP3 · SNT14
-  {bldg:'BP3',floor:1,line:'SNT14',station:'CA1',serial:'T26100014',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01'},
-  // BP3 · CD2S2
-  {bldg:'BP3',floor:1,line:'CD2S2',station:'CA01',serial:'T26090033',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-01'},
-  // BP9 · CD3-07 F2
-  {bldg:'BP9',floor:2,line:'CD3-07',station:'CA-03',serial:'T26100036',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:2,line:'CD3-07',station:'CA-03',serial:'T26100028',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:2,line:'CD3-07',station:'CA-01',serial:'T26100026',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:2,line:'CD3-07',station:'CA-02',serial:'T26090042',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'CD3-07',station:'CA-03',serial:'T26060003',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:2,line:'CD3-07',station:'CA-03',serial:'T26060001',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  // BP9 · CD3-04 F2
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'CA-02',serial:'T26090043',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'CA-02',serial:'T26040012',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-26'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'CA-04',serial:'T26090023',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-03'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'CA-05',serial:'T26090015',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-25'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'Offline',serial:'T26100029',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'Offline',serial:'T26100030',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'Offline',serial:'T26060003',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-01-26'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'CA-02',serial:'T25180015',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'CA-04',serial:'T26100062',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'CA-05',serial:'T26140057',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'Offline',serial:'T26060011',model:'ASD-SD3041B-2',status:'offline',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:2,line:'CD3-04',station:'Offline',serial:'T26100021',model:'ASD-SD3041B-2',status:'offline',calibDue:'2027-06-01'},
-  // BP9 · CD3-03 F2
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'CA-02',serial:'T26100032',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'CA-04',serial:'T26090050',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-03'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'Offline',serial:'T26100033',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'Offline',serial:'T26100031',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'Offline',serial:'T26100035',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'CA-02',serial:'T26040016',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-26'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'CA-02',serial:'T26100032B',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'CA-02',serial:'T26140058',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'CA-04',serial:'T26140063',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'CA-05',serial:'T26130015',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'Offline',serial:'T26100007',model:'ASD-SD3041B-2',status:'offline',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:2,line:'CD3-03',station:'Offline',serial:'T26030022',model:'ASD-SD3041B-2',status:'offline',calibDue:'2027-06-01'},
-  // BP9 · CDS3-02 F1
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-01',serial:'T26090047',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-03',serial:'T26040009',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-25'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-02',serial:'T26030002',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-25'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-03',serial:'T26040015',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-26'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-04',serial:'T26090020',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'Offline',serial:'T26090021',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-03-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'Offline',serial:'T26090022',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-03-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'Offline',serial:'T26040023',model:'ECM-SD3-F50S0',status:'offline',calibDue:'2027-01-26'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-05',serial:'T26090019',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-06',serial:'T26090024',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-01',serial:'T26060006',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-02',serial:'T26060012',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-03',serial:'T26060016',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-04',serial:'T26100026',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'Offline',serial:'T26030011',model:'ASD-SD3041B-2',status:'offline',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'Offline',serial:'T26030019',model:'ASD-SD3041B-2',status:'offline',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-05',serial:'T26140059',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-06',serial:'T26140007',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  // BP9 · CDS3-04 F1
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-07',serial:'T26100034',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-06',serial:'T26090037',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-03'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-04',serial:'T26090013',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-25'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-02',serial:'T26090014',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-25'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'Offline',serial:'T26090016',model:'ECM-SD3-F12S0',status:'offline',calibDue:'2027-01-25'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-04',serial:'T26090036',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-03',serial:'T26040007',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-22'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-06',serial:'T26040014',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-26'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-05',serial:'T26040022',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-26'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-01',serial:'T26130034',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-02',serial:'T26180013',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-03',serial:'T26180045',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-04',serial:'T26180032',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-05',serial:'T26180035',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  {bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-06',serial:'T26180049',model:'ASD-SD3041B-2',status:'active',calibDue:'2027-06-01'},
-  // BP9 · CDS2-02 F1
-  {bldg:'BP9',floor:1,line:'CDS2-02',station:'CA-03',serial:'T26090048',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10'},
-  // BP9 · Storage F2
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090037',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-03'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090038',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090039',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090040',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090041',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090043',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090044',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090045',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090046',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090047',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26090016',model:'ECM-SD3-F12S0',status:'spare',calibDue:'2027-01-25'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26040020',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-01-26'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26040018',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-01-25'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26040008',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-01-22'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26040010',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-01-26'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26040013',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-01-26'},
-  {bldg:'BP9',floor:2,line:'Storage',station:'Spare',serial:'T26040017',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-01-26'},
-  // BP9 · ME Support
-  {bldg:'BP9',floor:2,line:'ME Support',station:'Spare',serial:'T22230003',model:'ASD-SD3021B-1',status:'spare',calibDue:'2027-06-01'},
+  {id:'D001',bldg:'BP9',floor:2,line:'CD3-07',station:'CA-03',serial:'T26100036',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D002',bldg:'BP9',floor:2,line:'CD3-07',station:'CA-03',serial:'T26100028',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D003',bldg:'BP9',floor:2,line:'CD3-07',station:'CA-01',serial:'T26100026',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D004',bldg:'BP9',floor:2,line:'CD3-07',station:'CA-02',serial:'T26090042',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D005',bldg:'BP9',floor:2,line:'CD3-04',station:'CA-02',serial:'T26090043',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D006',bldg:'BP9',floor:2,line:'CD3-04',station:'CA-02',serial:'T26040012',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D007',bldg:'BP9',floor:2,line:'CD3-04',station:'CA-04',serial:'T26090023',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D008',bldg:'BP9',floor:2,line:'CD3-04',station:'CA-05',serial:'T26090015',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D009',bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-01',serial:'T26090047',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D010',bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-03',serial:'T26040009',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D011',bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-02',serial:'T26030002',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D012',bldg:'BP9',floor:1,line:'CD3-03',station:'CA-02',serial:'T26040016',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D013',bldg:'BP9',floor:2,line:'CD3-03',station:'CA-05',serial:'T26030006',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D014',bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-03',serial:'T26040015',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D015',bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-04',serial:'T26090020',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D016',bldg:'BP9',floor:1,line:'CDS3-02',station:'Offline',serial:'T26090021',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D017',bldg:'BP9',floor:1,line:'CDS3-02',station:'Offline',serial:'T26090022',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D018',bldg:'BP9',floor:1,line:'CDS3-02',station:'Offline',serial:'T26040023',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D019',bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-05',serial:'T26090019',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D020',bldg:'BP9',floor:1,line:'CDS3-02',station:'CA-06',serial:'T26090024',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D021',bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-07',serial:'T26100034',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D022',bldg:'BP9',floor:2,line:'CD3-03',station:'Offline',serial:'T26100035',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D023',bldg:'BP9',floor:2,line:'CD3-04',station:'Offline',serial:'T26060003',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D024',bldg:'BP9',floor:2,line:'CD3-04',station:'Offline',serial:'T26100029',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D025',bldg:'BP9',floor:2,line:'CD3-04',station:'Offline',serial:'T26100030',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D026',bldg:'BP9',floor:2,line:'CD3-03',station:'Offline',serial:'T26100031',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D027',bldg:'BP9',floor:2,line:'CD3-03',station:'CA-02',serial:'T26100032',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D028',bldg:'BP9',floor:2,line:'CD3-03',station:'Offline',serial:'T26100033',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D029',bldg:'BP9',floor:2,line:'CD3-03',station:'CA-04',serial:'T26090050',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D030',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090037',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D031',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090038',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D032',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090039',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D033',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090040',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D034',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090041',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D035',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090043',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D036',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090044',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D037',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090045',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D038',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090046',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D039',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090047',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D040',bldg:'BP9',floor:1,line:'CDS2-02',station:'CA-03',serial:'T26090048',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D041',bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-06',serial:'T26090037',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D042',bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-04',serial:'T26090013',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D043',bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-02',serial:'T26090014',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D044',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26090016',model:'ECM-SD3-F12S0',status:'spare',calibDue:'2027-03-12',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D045',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26040020',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D046',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26040018',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D047',bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-04',serial:'T26090036',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D048',bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-03',serial:'T26040007',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D049',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26040008',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D050',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26040010',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D051',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26040013',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D052',bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-06',serial:'T26040014',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D053',bldg:'BP9',floor:2,line:'Storage',station:'Spare part',serial:'T26040017',model:'ECM-SD3-F50S0',status:'spare',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D054',bldg:'BP9',floor:1,line:'CDS3-04',station:'CA-05',serial:'T26040022',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-03-10',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D055',bldg:'BP3',floor:1,line:'CD2',station:'CA01',serial:'T24440016',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D056',bldg:'BP3',floor:1,line:'CD2',station:'CA02',serial:'T26100015',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D057',bldg:'BP3',floor:1,line:'CD2',station:'CA03',serial:'T25130015',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D058',bldg:'BP3',floor:1,line:'CD2',station:'CA04',serial:'T24330003',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D059',bldg:'BP3',floor:1,line:'CD2',station:'Offline',serial:'T26100022',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D060',bldg:'BP3',floor:1,line:'SNT17',station:'Offline',serial:'T23110003',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D061',bldg:'BP3',floor:1,line:'SNT17',station:'SS02',serial:'T26030011',model:'ECM-SD3-F30S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D062',bldg:'BP3',floor:1,line:'SNT17',station:'SS03',serial:'T25370008',model:'ECM-SD3-F30S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D063',bldg:'BP3',floor:1,line:'SNT17',station:'SS04',serial:'T23110008',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D064',bldg:'BP3',floor:1,line:'SNT23',station:'CA02',serial:'T24330009',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D065',bldg:'BP3',floor:1,line:'SNT23',station:'CA02',serial:'T26100013',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D066',bldg:'BP3',floor:1,line:'SNT23',station:'SS03',serial:'T23220003',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D067',bldg:'BP3',floor:1,line:'CDS1',station:'CA01',serial:'T24330009',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D068',bldg:'BP3',floor:1,line:'CDS1',station:'CA01',serial:'T25080029',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D069',bldg:'BP3',floor:1,line:'CDS1',station:'CA02',serial:'T26100013',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D070',bldg:'BP3',floor:1,line:'CDS1',station:'CA02',serial:'T23200003',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D071',bldg:'BP3',floor:1,line:'CDS1',station:'CA02',serial:'T25450033',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D072',bldg:'BP3',floor:1,line:'CDS1',station:'CA03',serial:'T24440015',model:'ECM-SD3-F30S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D073',bldg:'BP3',floor:1,line:'CDS1',station:'CA03',serial:'T25030019',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D074',bldg:'BP3',floor:1,line:'CDS1',station:'CA04',serial:'T25100009',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D075',bldg:'BP3',floor:1,line:'CDS1',station:'CA04',serial:'T24120023',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D076',bldg:'BP3',floor:1,line:'CDS1',station:'CA05',serial:'T23510010',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D077',bldg:'BP3',floor:1,line:'CDS1',station:'CA04',serial:'T25030019',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D078',bldg:'BP3',floor:1,line:'CDS1',station:'CA05',serial:'T25100009',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D079',bldg:'BP3',floor:1,line:'SNT25',station:'SS01',serial:'T25450027',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D080',bldg:'BP3',floor:1,line:'SNT25',station:'SS02',serial:'T25290024',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D081',bldg:'BP3',floor:1,line:'SNT25',station:'SS03',serial:'T26100021',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D082',bldg:'BP3',floor:1,line:'SNT25',station:'CA02',serial:'T25450036',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D083',bldg:'BP3',floor:1,line:'SNT25',station:'SS04',serial:'T25450036',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D084',bldg:'BP3',floor:1,line:'SNT25',station:'Offline1',serial:'T25330021',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D085',bldg:'BP3',floor:1,line:'SNT25',station:'Offline2',serial:'T25080041',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D086',bldg:'BP3',floor:1,line:'SNT25',station:'Test machine',serial:'T25080041B',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D087',bldg:'BP3',floor:1,line:'SNT26',station:'CA1',serial:'T25290004',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D088',bldg:'BP3',floor:1,line:'SNT26',station:'CA2',serial:'T25290015',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D089',bldg:'BP3',floor:1,line:'SNT26',station:'CA3',serial:'T26100023',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D090',bldg:'BP3',floor:1,line:'SNT14',station:'CA1',serial:'T26100014',model:'ECM-SD3-F12S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
+  {id:'D091',bldg:'BP3',floor:1,line:'CD2S2',station:'CA01',serial:'T26090033',model:'ECM-SD3-F50S0',status:'active',calibDue:'2027-01-01',brand:'DELTA',dept:'S2D14R03'},
 ];
 
 // ═══════════════════════════════════════════════════
@@ -886,7 +845,7 @@ function lStats(devs) {
     active:  devs.filter(function(d){return d.status==='active'}).length,
     offline: devs.filter(function(d){return d.status==='offline'}).length,
     spare:   devs.filter(function(d){return d.status==='spare'}).length,
-    broken:  devs.filter(function(d){return d.status==='broken'}).length};
+    broken:  devs.filter(function(d){return d.status==='broken'||d.status==='repairs'}).length};
 }
 
 // ═══════════════════════════════════════════════════
@@ -995,7 +954,7 @@ function closeModal() { document.getElementById('modalRoot').innerHTML = ''; }
 // ═══════════════════════════════════════════════════
 //  ADMIN PANEL
 // ═══════════════════════════════════════════════════
-function isAdminAuth() { return sessionStorage.getItem(ADMIN_KEY) === 'ok'; }
+function isAdminAuth() { return true; }
 function adminLogin() {
   var inp = document.getElementById('adminPassInp');
   var err = document.getElementById('adminErr');
@@ -1015,17 +974,8 @@ function adminLogout() {
   addAudit('Setting','Admin logout');
   renderPage();
 }
-function renderAdmin() { return isAdminAuth() ? renderAdminPanel() : renderAdminLock(); }
-function renderAdminLock() {
-  return '<div class="lock-screen"><div class="lock-box">'
-    +'<div class="lock-icon">🔐</div>'
-    +'<div class="lock-title">ME Team Admin</div>'
-    +'<div class="lock-sub">ใส่ password เพื่อแก้ไขข้อมูล<br>QA/QC และบุคคลทั่วไปดูได้อย่างเดียว</div>'
-    +'<input class="lock-inp" id="adminPassInp" type="password" placeholder="••••••••••••" id="adminPassInp">'
-    +'<div class="lock-err" id="adminErr"></div>'
-    +'<button class="lock-btn" onclick="adminLogin()">🔓 เข้าสู่ระบบ</button>'
-    +'</div></div>';
-}
+function renderAdmin() { return renderAdminPanel(); }
+// Admin lock removed
 function renderAdminPanel() {
   var all = allDevices();
   var filtered = adminSearch
@@ -1040,7 +990,7 @@ function renderAdminPanel() {
     +(SHEETS_URL
       ? '<span style="font-size:11px;color:var(--act);font-family:var(--mono)">✓ Google Sheets เชื่อมแล้ว</span>'
       : '<span style="font-size:11px;color:var(--warn);font-family:var(--mono)">⚠ ยังไม่ได้เชื่อม Sheets</span>')
-    +'<button class="admin-logout" onclick="adminLogout()">ออกจากระบบ</button>'
+    +''
     +'</div></div>'
     // Sheets config
     +'<div class="sheets-config">'
@@ -1862,9 +1812,8 @@ document.addEventListener('DOMContentLoaded', function(){
     var np = document.getElementById('notifPanel');
     if (np && np.classList.contains('open') && !np.contains(e.target) && e.target.id!=='btnNotif' && !e.target.closest('#btnNotif')) closeNotif();
   });
-  // Who am I
-  var who = localStorage.getItem('sd_who');
-  if (!who) { var n=prompt('กรุณากรอกชื่อของคุณ (สำหรับ Audit Log):',''); if(n&&n.trim()) localStorage.setItem('sd_who',n.trim()); }
+  // Who am I — auto set as 'ME Team'
+  if (!localStorage.getItem('sd_who')) localStorage.setItem('sd_who','ME Team');
   // Apply saved settings & init
   applyCfg();
   gotoPage('overview');
